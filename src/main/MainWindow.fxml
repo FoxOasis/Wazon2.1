@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="glownyEkran" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <fx:include fx:id="topManuButtons" source="ManuButtons.fxml">
+      </fx:include>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
