@@ -16,6 +16,7 @@ public class WazonMain extends Application {
         Scene scene = new Scene(wazonGlowna);
 
         primaryStage.setTitle("The best sklep in da word");
+        primaryStage.setOnCloseRequest((e) -> MainController.zamknijProgram());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

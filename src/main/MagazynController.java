@@ -48,6 +48,7 @@ public class MagazynController {
     public void initialize() {
 
 
+        tablicaProduktow = (TableView<Produkty>) WareHouse.INSTANCE.getListaproduktow();
         tablicaProduktow.getItems().add(new Produkty("Tablet", 40, 32));
         tablicaProduktow.getItems().add(new Produkty("Kawa", 20, 3));
 

@@ -1,5 +1,6 @@
 package main;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,4 +37,9 @@ public class MainController {
         glownyEkran.setCenter(parent);
 
     }
+public static void zamknijProgram() throws IOException {
+    WareHouse.INSTANCE.zapisDoPlik();
+        Platform.exit();
+    System.exit(0);
+}
 }

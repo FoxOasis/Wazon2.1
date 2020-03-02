@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class WareHouse {
 
-        public static final WareHouse INSTANCE = new WareHouse();
-private List<Produkty> listaproduktow = new ArrayList<Produkty>();
+    public static final WareHouse INSTANCE = new WareHouse();
+    private List<Produkty> listaproduktow = new ArrayList<Produkty>();
 
     public List<Produkty> getListaproduktow() {
         return listaproduktow;
@@ -20,39 +20,51 @@ private List<Produkty> listaproduktow = new ArrayList<Produkty>();
 
     private WareHouse() {
 
-//                try {
-//                    zapisDoPlik();
-//                    czytajPlik();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-// to do : wczytaj plik i wrzuc do listyproduktow
+                try {
+                    zapisDoPlik();
+                    czytajPlik();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
-
-        }
-    public void zapisDoPlik() throws IOException {
-//        String filePath ="file.txt";
-//
-//        FileWriter zapis = new FileWriter(filePath, true);
-//        zapis.append(pierwszaDana).append(",").append(drugaDana).append(",").append(trzeciaDana).append(",");
-//        zapis.close();
 
     }
+
+    public void zapisDoPlik() throws IOException {
+        String filePath ="ListaProduktow.txt";
+
+        FileWriter zapis = new FileWriter(filePath, true);
+
+        zapis.append(pierwszaDana).append(",").append(drugaDana).append(",").append(trzeciaDana).append(",");
+        zapis.close();
+
+    }
+
     private void czytajPlik() throws IOException {
-        String filePath ="file.txt";
+        String filePath = "ListaProduktow.txt";
         File plik = new File(filePath);
         Scanner czytelnik = new Scanner(plik);
         String wiersz = czytelnik.nextLine();
+
         String[] wynik = wiersz.split(",");
-        for (String imie: wynik) {
-            System.out.println(imie);
+        for (int index =0; index<wynik.length; index+=3) {
+
+            Produkty produkt = new Produkty(wynik[index],Integer.parseInt(wynik[index+1]),Integer.parseInt(wynik[index+2]));
+            listaproduktow.add(produkt);
         }
-    }
-    public void dodajProdukt(Produkty produkt){
-listaproduktow.add(produkt);
+
+
+
+
+
+        }
+
+
+    public void dodajProdukt(Produkty produkt) {
+        listaproduktow.add(produkt);
 
     }
-    }
+}
 
 
