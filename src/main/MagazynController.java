@@ -65,6 +65,9 @@ public class MagazynController {
         productSelected.forEach(allProduct::remove);
     }
 
+    public TableView<Produkty> getTablicaProduktow() {
+        return tablicaProduktow;
+    }
 }
 
 
