@@ -33,24 +33,27 @@ public class MagazynController {
     TableColumn<Produkty, Float> kolumnaCena;
 
 
+
     public void przyciskDodaj(ActionEvent actionEvent) {
         Produkty produkt = new Produkty();
         produkt.setName(poleNazwaProduktu.getText());
         produkt.setQuantity(Integer.parseInt(poleIloscProduktu.getText()));
         produkt.setPrice(Float.parseFloat(poleCenaProduktu.getText()));
-        tablicaProduktow.getItems().add(produkt);
+tablicaProduktow.getItems().add(produkt);
+        WareHouse.INSTANCE.dodajProdukt(produkt);
         poleCenaProduktu.clear();
         poleIloscProduktu.clear();
         poleNazwaProduktu.clear();
+
     }
 
 
     public void initialize() {
 
 
-        tablicaProduktow = (TableView<Produkty>) WareHouse.INSTANCE.getListaproduktow();
-        tablicaProduktow.getItems().add(new Produkty("Tablet", 40, 32));
-        tablicaProduktow.getItems().add(new Produkty("Kawa", 20, 3));
+     //   tablicaProduktow.setItems(FXCollections.observableList(WareHouse.INSTANCE.getListaproduktow()));
+        tablicaProduktow.getItems().addAll(WareHouse.INSTANCE.getListaproduktow());
+    //    tablicaProduktow.getItems().add(new Produkty("Kawa", 20, 3));
 
 
         kolumnaNazwa.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -63,6 +66,9 @@ public class MagazynController {
         allProduct = tablicaProduktow.getItems();
         productSelected = tablicaProduktow.getSelectionModel().getSelectedItems();
         productSelected.forEach(allProduct::remove);
+        for (Produkty item : productSelected) {
+            WareHouse.INSTANCE.usunProdukt(item);
+        }
     }
 
     public TableView<Produkty> getTablicaProduktow() {

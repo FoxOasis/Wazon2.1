@@ -26,8 +26,10 @@ public class MainController {
 
     public void setCenter(String fxmlPath) {
         FXMLLoader loader = new FXMLLoader();
+
         loader.setLocation(getClass().getResource(fxmlPath));
         Parent parent = null;
+
         try {
             parent = loader.load();
         } catch (IOException e) {
@@ -37,9 +39,13 @@ public class MainController {
         glownyEkran.setCenter(parent);
 
     }
-public static void zamknijProgram() throws IOException {
-    WareHouse.INSTANCE.zapisDoPlik();
-        Platform.exit();
+public static void zamknijProgram() {
+    try {
+        WareHouse.INSTANCE.zapisDoPlik();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    Platform.exit();
     System.exit(0);
 }
 }
